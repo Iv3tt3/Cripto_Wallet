@@ -1,0 +1,52 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/static/css/pico.css"> 
+        <link rel="stylesheet" href="/static/css/style.css">
+        <title>Cripto Wallet</title>
+        {% block js %} {% endblock %}
+    </head>
+    <body>
+        <header>
+            <h1>Cripto Wallet {{page}}</h1>
+        </header> 
+        <div>
+            <div class="navlink" style="padding: 10pt; margin-bottom: 30pt; background-color: rgb(240, 240, 240);">
+                {% if actual_page == "index" %} 
+                <a href="/alltransactions">App view - Click here to change to Classic version</a>
+                {% else %}
+                <a href="/">App view - Click here to change to New version</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="container">
+            {% if actual_page == "index" %}
+            {% else %}
+                <div id="msg-error">
+                    {% with msgs = get_flashed_messages() %}
+                        {% if msgs %}
+                            {% for msg in msgs%}
+                                <p>{{msg}}</p>
+                            {% endfor %}
+                        {% endif  %}
+                    {% endwith %}
+                </div>
+                <div class="grid_20-20-40-20">
+                    <div {% if actual_page == "alltransactions" %} class="noactive" {% else%} class="navlink"{% endif %}><a href="/alltransactions">All transactions</a></div>
+                    <div {% if actual_page =="form_new" %} class="noactive" {% else%} class="navlink"{% endif %}><a href="/new_transaction">New transaction</a></div>
+                    <div></div>
+                    <div {% if actual_page =="status" %} class="noactive" {% else%} class="navlink"{% endif %}><a href="/status">Wallet Status</a></div>
+                </div>
+            {% endif %}
+        </div>
+        <main class="container">
+            {% block content %}{% endblock %}
+        </main>
+    
+        <footer>
+            <p>&copy; Iv3tt3 2023</p>
+        </footer>
+
+    </body>
+</html>

@@ -1,0 +1,181 @@
+/* Estilos para header y footer*/
+
+header, footer{
+    background-color: #23695c;
+}
+
+header h1{
+    color:white;
+    font-weight: bold;
+    text-align:center;
+}
+
+footer p{
+    color:white;
+    font-weight: bold;
+    text-align:center;
+}
+
+/* Estilos para botones */
+
+#new_btn{
+  width: 100%;
+}
+#cancel_btn{
+  width: 100%;
+}
+
+#status_btn{
+  width: 100%;
+}
+#close_status_btn{
+  width: 100%;
+}
+
+.inactiveButton {
+  --primary: rgb(189, 189, 189);
+  cursor: not-allowed;
+  color: grey;
+  pointer-events: none;
+  background-color: rgba(211, 211, 211, 0.287);
+}
+
+/* clase invisible */
+
+.invisible{
+  display: none;
+}
+
+/* GRIDS */
+
+.grid_50-50{
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.grid-item {
+  margin: 20pt;
+  padding: 20pt;
+  background-color: rgba(246, 246, 246, 0.743);
+  border-radius: 10pt
+}
+
+.grid_50-25-25{
+  display: grid;
+  grid-template-columns: 50% 25% 25%;
+}
+#grid_33-33-33{
+  display: grid;
+  grid-template-columns: 33% 33% auto;
+}
+
+/* Estilos para el new transaction form */
+.description {
+  color:grey;
+  font-size: 90%;
+}
+
+
+/* Estilos para status section */
+
+#status_section{
+  margin-top: 20pt;
+  margin-bottom: 50pt;
+  padding: 20pt;
+  background-color: rgba(246, 246, 246, 0.743);
+  border-radius: 10pt
+}
+
+#item1_grid33{
+  border: 1px solid grey;
+  background-color: white;
+  border-radius: 5pt 0pt 0pt 5pt;
+  text-align: center;
+  padding-top: 30pt;
+}
+
+#item2_grid33{
+  border: 1px solid grey;
+  background-color: white;
+  text-align: center;
+  padding-top: 30pt;
+}
+
+#item3_grid33{
+  border: 1px solid grey;
+  background-color: white;
+  border-radius: 0pt 5pt 5pt 0pt;
+  text-align: center;
+  padding-top: 30pt;
+
+}
+
+/* Estilo para empty wallet: id notransactions and id nostatus  */
+
+.information_message{
+  color: darkgray;
+  text-align:center;
+  font-size: 20pt;
+  background-color: rgba(211, 211, 211, 0.33);
+  padding: 50pt;
+  border-radius: 10pt;
+  font-weight: bold;
+}
+
+/* ESTILOS PARA FLASK CLASIC */
+
+/* Estilos de mensaje de error */
+
+#msg-error p{
+  color:white;
+  font-weight: bold;
+  background-color: rgb(184, 16, 16);
+  text-align: center;
+  margin-top: 10pt;
+}
+
+/* Estilos de navegacion */
+
+.grid_20-20-40-20{
+  display: grid;
+  grid-template-columns: 20% 20% 40% 20%;
+}
+
+.navlink:hover { 
+  background-color:  #3796854f;;
+  background-size: 100pt;
+  color: white;
+  text-align: center;
+}
+
+.navlink { 
+  text-align: center;
+}
+
+
+/* Estilos para el enlace inactivo */
+.noactive {
+  --primary: grey;
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: rgba(211, 211, 211, 0.287);
+  border-bottom: 1px solid black;
+  text-align: center;
+}
+
+#statustable{
+  margin-top: 20pt;
+  width: 60%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tabletitles th{
+  color: rgb(67, 67, 67);
+  background-color: rgba(204, 226, 223, 0.6);
+  text-align:center;
+}
+
+.tablebody td{
+  text-align: center;
+}

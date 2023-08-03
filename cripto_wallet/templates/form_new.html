@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+    <main>
+        <div>
+            {% if info_msg %} 
+                <p style="color:red;">{{ info_msg }}</p>
+            {% endif %}
+        </div>
+        <div class="grid_50-50">
+            <div class="grid-item" style="background-color: rgba(246, 246, 246, 0.743);border-radius: 10pt;">
+                <form action="/new_transaction" method="post">
+                    {{form.csrf_token}} 
+                    <p style="font-size: 20pt;font-weight: bold;text-align: center;">Calculator</p>
+                    <div>
+                        {{form.amount.label}}
+                        <p class="descript"><em>{{form.amount.description}}</em></p>
+                        {% if form.amount.errors %} 
+                            {% for error in form.amount.errors %}
+                            <p style="color:red; margin: 0;">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        {{form.amount}}
+                    </div>
+                    <div>
+                        {{form.coinFrom.label}}
+                        {% if form.coinFrom.errors %} 
+                            {% for error in form.coinFrom.errors %}
+                            <p style="color:red; margin:0">{{ error }}</p>
+                            {% endfor %}
+                        {% endif %}
+                        <p class="descript"><em>{{form.coinFrom.description}}</em></p>
+                        {{form.coinFrom(placeholder='Seleccione una opción')}}
+                    </div>
+                    <div>
+                        {{form.coinTo.label}}
+                        {% if form.coinTo.errors %} 
+                        {% for error in form.coinTo.errors %}
+                        <p style="color:red; margin:0">{{ error }}</p>
+                        {% endfor %}
+                        {% endif %}
+                        <p class="descript"><em>{{form.coinTo.description}}</em></p>
+                        {{form.coinTo}}
+                    </div>
+                    <div>
+                         {{form.submit_button}}
+                    </div>
+            </div>
+
+            {% if form.submit_button.data %}
+            <div class="grid-item" style="background-color: rgba(246, 246, 246, 0.743);border-radius: 10pt;">
+                    <div>
+                            <p style="font-size: 20pt;font-weight: bold;text-align: center;">Result</p>
+                            <p style="margin-bottom: 0;"><b>Current rate:</b></p>
+                            <p id="result"> 1 {{calculator.From_Coin}} = {{ calculator.rate }} {{calculator.To_Coin}} </p>
+                            <p style="margin-bottom: 0;"><b>If you invest:</b></p>
+                            <p id="result"> {{ calculator.Amount_From }} {{calculator.From_Coin}} </p>
+                            <p style="margin-bottom: 0;"><b>The amount you will get is:</b></p>
+                            <p id="result"> {{ calculator.Amount_To }} {{calculator.To_Coin}} </p>
+                    </div>
+                    <div style="background-color: #23695c;padding-top: 20pt;border-radius: 10pt;margin-top: 10pt;">
+                        <p style="font-size: 20pt;font-weight: bold;text-align: center;color: white;">Ready to Purchase?</p>
+                        <div style="border: 5pt solid #23695c;border-radius: 10pt; background-color: white ;padding: 20pt;">
+                            <p style="font-weight: bold;text-align: center; background-color: rgba(246, 246, 246, 0.743);">Order resume:</p>
+                            <div style="padding-left: 20pt;text-align: left;">
+                                <p><b>From </b><em>(investing amount)</em>:
+                                <br>{{calculator.Amount_From}} {{calculator.From_Coin}}</p>
+                                <p><b>To</b><em>(purchasing amount)</em>:
+                                <br>{{ calculator.Amount_To}} {{calculator.To_Coin}}</p>
+                            </div>
+                            {{form.purchase_button}}
+                            {{form.cancel_button}}
+                        </div>
+                    </div>
+            </div>
+            {% endif %}
+            </form>
+        </div>
+    </main>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content%}
+
+    <main>
+
+        {% if info_msg %}
+            <p class="information_message"> {{info_msg}} </p>
+
+        {% else %}
+            <table id="statustable">
+                <tr class="tabletitles">
+                    <th>Coin</th>
+                    <th>Total amount</th>
+                    <th>Current value <br> (in EUR)</th>
+                </tr>
+                
+                {% for cripto in data['wallet_criptos'] %}
+                <tr class="tablebody">
+                    <td>{{cripto[0]}}</td>
+                    <td style="text-align: right;padding-right: 20pt;">{{cripto[1]}}</td>
+                    <td style="text-align: right;padding-right: 20pt;">{{cripto[2]}}</td>
+                </tr>
+                {% endfor %}
+
+            </table>
+
+            <p>Total Current Value: {{data['wallet_value']}} EUR</p>
+            <p>Invested Euros: {{data['invested_euros']}} EUR</p>
+            <p>Refund Euros: {{data['refund_euros']}} EUR</p>
+            <p>Investment Result: {{data['investment_result']}} EUR</p>
+
+        {% endif %}
+
+    </main>
+
+{% endblock %}

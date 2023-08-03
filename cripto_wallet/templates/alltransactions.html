@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <main>
+        <table>
+            <tr class="tabletitles">
+                <th>Date</th>
+                <th>Time</th>
+                <th>FROM</th>
+                <th>Amount (From)</th>
+                <th>TO</th>
+                <th>Amount (To)</th>
+            </tr> 
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{transaction["Date"]}}</td>
+                    <td>{{transaction["Time"]}}</td>
+                    <td>{{transaction["From_Coin"]}}</td>
+                    <td style="text-align: right;padding-right: 20pt;">{{transaction["Amount_From"]}}</td>
+                    <td>{{transaction["To_Coin"]}}</td>
+                    <td style="text-align: right;padding-right: 20pt;">{{transaction["Amount_To"]}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+        {% if info_msg %}
+            <p class="information_message"> {{info_msg}} </p>
+        {% endif %}
+
+    </main>
+
+{% endblock %}
